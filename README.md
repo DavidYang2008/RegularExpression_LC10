@@ -1,8 +1,8 @@
 # RegularExpression_LC10
 
-Do regular expression matching using a recursive program. 
+Do regular expression matching using a recursive program. One tricky thing is to effciently and correctly handle the case that "." and "*" are repeated and mixed together, like "..*..****.".
 
-Here is the problem description
+Here is the problem description:
 
 Implement regular expression matching with support for '.' and '*'.
 
