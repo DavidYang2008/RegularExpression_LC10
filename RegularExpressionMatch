@@ -1,0 +1,57 @@
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        return m2(s, 0, p, 0);
+    }
+    
+    bool m2(string& s, int si, string& p, int pj) {
+    
+        if (si>s.size()) return false;
+        if (si==s.size() && pj>=p.size()) return true;
+        
+        if (p[pj]=='.') {
+            if (pj+1<p.size() && p[pj+1]=='*') {
+                // case of zero repetition
+                if (m2(s, si, p, pj+2)) return true;
+                // case of 1 repetition
+                if (m2(s, si+1, p, pj+2)) return true;
+                // case of n repetition
+                int i=1;
+                while (si+i<s.size()) {
+                    if (m2(s, si+i+1, p, pj+2)) return true;
+                    ++i;
+                }
+            } else {
+                // no repetition
+                if (m2(s, si+1, p, pj+1)) return true;
+            }
+            //return false;
+        } else {
+            assert(p[pj]!='*');
+            
+            if (pj+1<p.size() && p[pj+1]=='*') {
+                // case of zero repetition
+                if (m2(s, si, p, pj+2)) return true;
+                // case of 1 repetition
+                if (s[si]==p[pj]) {
+                    if (m2(s, si+1, p, pj+2)) return true;
+                    
+                    // case of n repetition
+                    int i=1;
+                    while (si+i<s.size() && s[si+i]==s[si]) {
+                        if (m2(s, si+i+1, p, pj+2)) return true;
+                        ++i;
+                    }
+                }
+                
+            } else {
+                // no repetition or '.'
+                if (s[si]==p[pj]) {
+                    // must match
+                    if (m2(s, si+1, p, pj+1)) return true;
+                }
+            }
+        } 
+        return false;
+    }
+};
