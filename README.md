@@ -1,8 +1,6 @@
-# RegularExpression_LC10
+# Recursive Matching Regular Expression
 
-Do regular expression matching using a recursive program. One tricky thing is to effciently and correctly handle the case that "." and "*" are repeated and mixed together, like "..*..****.".
-
-Here is the problem description:
+# Problem to solve
 
 Implement regular expression matching with support for '.' and '*'.
 
@@ -22,3 +20,11 @@ isMatch("aa", "a*") → true
 isMatch("aa", ".*") → true
 isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
+
+# Solution
+
+Use a recursive program. 
+
+One tricky thing is to effciently and correctly handle the case that "." and "*" are repeated and mixed together, like "..*..****.".
+
+
